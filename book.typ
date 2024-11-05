@@ -4,13 +4,15 @@
 #show: book
 
 #book-meta(
-  title: "shiroa",
+  title: "typst-assignment-template",
   summary: [
-    #prefix-chapter("sample-page.typ")[Hello, typst]
+    #prefix-chapter("main.typ")[example]
   ]
 )
 
+#build-meta(dest-dir: "dist")
 
+#get-book-meta()
 
 // re-export page template
 #import "/templates/page.typ": project
