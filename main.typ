@@ -189,7 +189,7 @@
 
 #{
   show raw.where(block: true): it => {
-    set text(size: 10.5pt)
+    // set text(size: 10.5pt)
     grid(..it.lines.enumerate().map(((i, line)) => (line,)).flatten())
   }
   set heading(numbering: none)

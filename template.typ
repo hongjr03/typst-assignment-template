@@ -1,4 +1,5 @@
 #import "@preview/numbly:0.1.0": numbly
+#import "/templates/page.typ": *
 
 #let default_font = (
   main: "IBM Plex Sans",
@@ -18,7 +19,11 @@
 /// -> content
 #let prob_block(body) = {
   block(
-    fill: rgb(253, 255, 253),
+    fill: if is-dark-theme {
+      rgb(21, 23, 21)
+    } else {
+      rgb(253, 255, 253)
+    },
     width: 100%,
     inset: 8pt,
     radius: 8pt,
@@ -48,7 +53,11 @@
   ]
   v(0em, weak: true)
   block(
-    fill: rgb("#fcfdff"),
+    fill: if is-dark-theme {
+      rgb("#0b0b0f")
+    } else {
+      rgb("#fcfdff")
+    },
     width: 100%,
     inset: 8pt,
     radius: (top: 0pt, bottom: 8pt),
@@ -182,18 +191,23 @@
     numbering: numbly(
       "{1:一}、",
       "{2:1}. ",
-      "{2:1}.{3}. ",
+      "{3}) ",
     ),
   )
 
   /// 设置代码块样式。
   set raw(tab-size: 4)
   show raw: set text(font: (font.mono, font.cjk))
-  show raw.where(block: false): box.with(fill: luma(240), inset: (x: 3pt, y: 0pt), outset: (y: 3pt), radius: 2pt)
+  show raw.where(block: false): box.with(
+    fill: code-extra-colors.bg,
+    inset: (x: 3pt, y: 0pt),
+    outset: (y: 3pt),
+    radius: 2pt,
+  )
   // https://github.com/typst/typst/issues/344#issuecomment-2041231063
   let style-number(number) = text(gray)[#number]
   show raw.where(block: true): it => block(
-    fill: luma(240),
+    fill: code-extra-colors.bg,
     inset: 10pt,
     radius: 4pt,
     width: 100%,
@@ -209,7 +223,7 @@
 
   /// 设置链接样式。
   show link: it => {
-    set text(fill: blue)
+    // set text(fill: blue)
     underline(it)
   }
 
@@ -252,18 +266,17 @@
   //   },
   // )
 
-  let make_header(name, width: 600pt, max: 26pt, step: 0.1pt) = {
+  let make_header(name) = {
     context {
-      if max == none {
-        max = text.size
-      }
-      let textsize = max
-      let size = measure(align(left, text(textsize)[#name]))
-      while size.width > width {
-        textsize = textsize - step
-        size = measure(align(left, text(textsize)[#name]))
-      }
-      return align(left, text(textsize)[#name])
+      let textsize = heading-sizes.at(0)
+      return heading(
+        numbering: none,
+        depth: 1,
+        bookmarked: false,
+        outlined: false,
+        supplement: none,
+        text(textsize)[#name],
+      )
     }
   }
 
@@ -281,10 +294,10 @@
   }
 
 
-  line(length: 100%)
+  line(length: 100%, stroke: main-color)
   make_header[*#course* | *#title*]
   info_display
-  line(length: 100%)
+  line(length: 100%, stroke: main-color)
 
   body
 }

@@ -81,7 +81,7 @@
 
   // Set main text
   set text(
-    font: main-font,
+    // font: main-font,
     size: main-size,
     fill: main-color,
     lang: "zh",
@@ -126,7 +126,7 @@
 
   // code block setting
   show raw: it => {
-    set text(font: code-font)
+    // set text(font: code-font)
     if "block" in it.fields() and it.block {
       rect(
         width: 100%,
@@ -136,7 +136,7 @@
         [
           #set text(fill: code-extra-colors.fg) if code-extra-colors.fg != none
           #set par(justify: false)
-          // #place(right, text(luma(110), it.lang))
+          #place(right, text(luma(110), it.lang))
           #it
         ],
       )
