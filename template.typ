@@ -267,17 +267,9 @@
   // )
 
   let make_header(name) = {
-    context {
-      let textsize = heading-sizes.at(0)
-      return heading(
-        numbering: none,
-        depth: 1,
-        bookmarked: false,
-        outlined: false,
-        supplement: none,
-        text(textsize)[#name],
-      )
-    }
+    set par(spacing: 0.5em)
+    par(text(heading-sizes.at(0))[#name])
+    
   }
 
 
