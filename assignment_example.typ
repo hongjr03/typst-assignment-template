@@ -172,6 +172,7 @@
   main: "IBM Plex Sans",
   mono: "IBM Plex Mono",
   cjk: "Noto Serif SC",
+  emph-cjk: "KaiTi",
   math: "IBM Plex Math",
   math-cjk: "Noto Serif SC",
 )
