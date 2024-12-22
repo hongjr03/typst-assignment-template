@@ -1,4 +1,4 @@
-# typst-assignment-template
+# Typst-Assignment-Template
 
 自用 typst 作业 / 报告模板，加入中文支持和一些排版的优化。已适配 typst 0.12.0 版本。
 
@@ -23,3 +23,13 @@
 使用前请阅读以下内容。
 
 [assignment_example](assignment_example.pdf)
+
+## Star History
+
+<a href="https://star-history.com/#hongjr03/Typst-Assignment-Template&Date">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=hongjr03/Typst-Assignment-Template&type=Date&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=hongjr03/Typst-Assignment-Template&type=Date" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=hongjr03/Typst-Assignment-Template&type=Date" />
+ </picture>
+</a>
