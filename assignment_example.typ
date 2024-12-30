@@ -43,9 +43,9 @@
 
 本模板基于 #link("https://github.com/gRox167/typst-assignment-template")[gRox167 的 typst-assignment-template] 修改，缝合了许多作者喜欢的特性，包括：
 
-+ 自动编号的问题块
-+ 自定义标题的特殊块
 + 引入 `numbly` 包，支持中文样式的标题编号
++ 引入 `zebraw` 包，支持代码块高亮
++ 引入 `frame-it` 包，支持自定义背景色的块
 + 美观整洁的排版
 
 = 使用<使用>
@@ -75,75 +75,73 @@
 
 == 正文
 
-在正文部分，你可以按照格式自由组合问题块、特殊块、问题和解答块。
+*此处对于块的使用较原来的模版有所改变，请勿混用。*
 
-=== 问题块
+模版使用 frame-it 包预定义了 prob 和 qna 两种块，分别用于问题和问答。使用方法如下：
 
-#prob[如何使用问题块来创建问题？][
-  你可以使用 `prob` 块来创建问题。
+```typ
+#prob[问题描述][
+  问题的回答
+]
+```
+
+#prob[问题描述][
+  问题的回答
 ]
 
-#prob[如果有连续的问题，如何处理？][
-  你可以使用 `cprob` 块来创建问题。例如：
+```typ
+#qna[问题描述][
+  问题的回答
+]
+```
 
-  ```typ
-  #cprob[这是一个问题][
-    这是问题的内容。
-  ]
+#qna[问题描述][
+  问题的回答
+]
+
+如果不需要问题的描述，可以直接使用：
+
+```typ
+#prob[][
+  问题的回答
+]
+```
+
+#prob[][
+  问题的回答
+]
+
+== 代码块
+
+模板使用 zebraw 包预定义了代码块，支持高亮。使用方法如下：
+
+````typ
+#zebraw(
+  highlight-lines: (3, 4, 5, 6),
+  ```cpp
+  #include <iostream>
+  using namespace std;
+  int main() {
+    cout << "Hello, World!" << endl;
+    return 0;
+  }
   ```
+)
+````
 
-  会生成一个带编号的问题块。请看下面的例子。
-]
-
-#cprob[这是一个问题][
-  这是问题的内容。
-]
-
-#cprob[这是另一个问题][
-  这是另一个问题的内容。
-]
-
-有编号的问题块会自动编号。你可以通过下面这一行代码重置问题计数器，使下一个问题从 1 开始编号。
-
-```typ
-#problem_counter.update(0) // 重置问题计数器
-```
-
-#problem_counter.update(0) // 重置问题计数器
-
-#cprob[这是一个新的问题][
-  这是新问题的内容。编号已经重置为 1。
-]
-
-=== 特殊块
-
-特殊块允许你自定义标题、内容和背景色。在我去年的作业中，一般使用特殊块来作为“问题-解答”块以和作业的解答区分开。比如下面的例子。
-
-#speci_block[如何使用特殊块？][
-  你可以使用 `speci_block` 块来创建特殊块。
-]
-
-#cqa[这是一个问题和解答块][
-  这是问题和解答块的内容。
-]
-
-同样的，你可以通过下面这一行代码重置问题和解答计数器，使下一个问题从 1 开始编号。
-
-```typ
-#prob-solution_counter.update(0) // 重置问题和解答计数器
-```
-
-#prob-solution_counter.update(0) // 重置问题和解答计数器
-
-#cqa[这是一个新的问题和解答块][
-  这是新问题和解答块的内容。编号已经重置为 1。
-]
+#zebraw(
+  highlight-lines: (3, 4, 5, 6),
+  ```cpp
+  #include <iostream>
+  using namespace std;
+  int main() {
+    cout << "Hello, World!" << endl;
+    return 0;
+  }
+  ```
+)
 
 == 自定义
-
-=== 更多自定义
-
-如果你需要更多的自定义，你可以在 `template.typ` 中自定义 `prob`、`cprob`、`cqa`、`prob_block`、`speci_block` 函数，以满足你的需求。
 
 === 标题编号
 
