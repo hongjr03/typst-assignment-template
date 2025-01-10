@@ -1,5 +1,5 @@
 #import "@preview/numbly:0.1.0": numbly
-#import "@local/zebraw:0.1.1": *
+#import "@preview/zebraw:0.1.0": *
 #import "@preview/frame-it:1.0.0": *
 
 #let default_font = (
