@@ -1,5 +1,8 @@
 # Typst-Assignment-Template
 
+> [!IMPORTANT]
+> 请使用 [OrangeX4/typst-ori](https://github.com/OrangeX4/typst-ori)，一个更好更美观的模版。本仓库不再维护。
+
 自用 typst 作业 / 报告模板，加入中文支持和一些排版的优化。已适配 typst 0.12.0 版本。
 
 原作者：[gRox167](https://github.com/gRox167/typst-assignment-template)，非常感谢。
